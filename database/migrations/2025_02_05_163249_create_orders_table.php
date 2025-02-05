@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('customer_id');
-            $table->decimal('total_price', 10, 2)->default(0); // เพิ่มค่าเริ่มต้นเป็น 0
+            $table->unsignedBigInteger('customer_id'); // Foreign Key ไปยัง product_customers
+            $table->decimal('total_price', 10, 2)->default(0);
             $table->timestamps();
 
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreign('customer_id')->references('id')->on('product_customers')->onDelete('cascade');
         });
+
     }
 
     /**

@@ -12,7 +12,7 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'customer_id' => \App\Models\Customer::factory(),
+            'customer_id' => \App\Models\ProductCustomer::factory(),
             'total_price' => $this->faker->randomFloat(2, 100, 1000), // สร้างราคาสุ่ม
         ];
     }

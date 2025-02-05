@@ -11,15 +11,8 @@ class Order extends Model
 
     protected $fillable = ['customer_id', 'total_price'];
 
-    // ความสัมพันธ์กับ Customer (Many to One)
     public function customer()
     {
-        return $this->belongsTo(Customer::class);
-    }
-
-    // ความสัมพันธ์กับ OrderDetail (One to Many)
-    public function orderDetails()
-    {
-        return $this->hasMany(OrderDetail::class);
+        return $this->belongsTo(ProductCustomer::class, 'customer_id');
     }
 }

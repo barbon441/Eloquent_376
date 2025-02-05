@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class ProductCustomer extends Model
 {
     use HasFactory;
 
     protected $fillable = ['name', 'email', 'phone'];
 
-    // ความสัมพันธ์กับ Order (One to Many)
     public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'customer_id');
     }
 }
